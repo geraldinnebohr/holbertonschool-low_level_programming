@@ -1,0 +1,1 @@
+Project about malloc, realloc and calloc with the use of exit function

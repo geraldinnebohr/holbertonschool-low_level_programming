@@ -1,0 +1,1 @@
+Project about creating my own static library
