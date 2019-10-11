@@ -12,7 +12,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	unsigned long int index = key_index((unsigned char *)key, ht->size);
 	hash_node_t *pocket = ht->array[index];
 
-	if (pocket == NULL || key == NULL)
+	if (ht == NULL || key == NULL)
 		return (NULL);
 
 	if (strcmp(key, "") == 0)
@@ -22,7 +22,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	{
 		if (strcmp(pocket->key, key) == 0)
 			return (pocket->value);
-		pocket = pocket->next;
 	}
+	pocket = pocket->next;
 	return (NULL);
 }
