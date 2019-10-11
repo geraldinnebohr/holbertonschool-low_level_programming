@@ -37,9 +37,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (strcmp(pocket->key, key) == 0)
 		{
-			free(pocket->value);
-			pocket->value = malloc(strlen(value) + 1);
-			strcpy(pocket->value, value);
+			pocket->value = strcpy(pocket->value, value);
 			return (1);
 		}
 		pocket = pocket->next;
