@@ -22,7 +22,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	{
 		if (strcmp(pocket->key, key) == 0)
 			return (pocket->value);
+		pocket = pocket->next;
 	}
-	pocket = pocket->next;
 	return (NULL);
 }
