@@ -21,34 +21,25 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
-	pocket = ht->array[index];
+	pocket = malloc(sizeof(hash_node_t));
+
 	if (pocket == NULL)
+		return (0);
+	pocket->key = (char *)key;
+	pocket->value = (char *)value;
+	pocket->next = NULL;
+	ht->array[index] = pocket;
+	return (1);
+
+	new = ht->array[index];
+	while (new != NULL)
 	{
-		pocket = malloc(sizeof(hash_node_t *));
-		if (pocket == NULL)
-			return (0);
-		pocket->key = (char *)key;
-		pocket->value = (char *)value;
-		pocket->next = NULL;
-		ht->array[index] = pocket;
-		return (1);
-	}
-	while (pocket->next != NULL)
-	{
-		if (strcmp(pocket->key, key) == 0)
+		if (strcmp(new->key, key) == 0)
 		{
-			pocket->value = strcpy(pocket->value, value);
+			free(new->value);
+			new->value = strdup(value);
 			return (1);
 		}
-		pocket = pocket->next;
+		new = new->next;
 	}
-	new = malloc(sizeof(hash_node_t *));
-	if (new == NULL)
-		return (0);
-	new->next = pocket;
-	pocket->next = NULL;
-	ht->array[index] = new;
-	new->key = (char *)key;
-	new->value = (char *)value;
-	return (1);
 }
