@@ -18,7 +18,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if (strcmp(key, "") == 0)
 		return (NULL);
 
-	while (pocket != NULL)
+	while (pocket)
 	{
 		if (strcmp(pocket->key, key) == 0)
 			return (pocket->value);
