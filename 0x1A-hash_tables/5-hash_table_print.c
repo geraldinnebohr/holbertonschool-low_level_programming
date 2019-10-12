@@ -11,11 +11,8 @@ void hash_table_print(const hash_table_t *ht)
 	hash_node_t *node;
 	unsigned long int i, temp = 0;
 
-	if (ht == NULL)
-		return;
-	else
+	if (ht != NULL)
 	{
-
 		printf("{");
 
 		i = 0;
