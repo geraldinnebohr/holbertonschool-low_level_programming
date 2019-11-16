@@ -1,0 +1,4 @@
+.PHONY: all
+all: holberton
+holberton: main.c m.h
+	gcc main.c holberton.c -o holberton
