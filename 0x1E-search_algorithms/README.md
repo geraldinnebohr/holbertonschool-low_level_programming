@@ -1,1 +1,1 @@
-Search Algorithms project in C
+Search Algorithms project
